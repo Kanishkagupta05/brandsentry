@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: brandsentry
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m app.server
+    healthCheckPath: /api/demo-accounts
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      # Optional: add ANTHROPIC_API_KEY in the Render dashboard to enable the AI tone / implied-claim pass.
